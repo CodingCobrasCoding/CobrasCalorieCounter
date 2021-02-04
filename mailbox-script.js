@@ -10,7 +10,7 @@ var meals = [] //stores objects with meal name and link to recipe
 
 $(document).ready(function(){
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var startDay = "Tuesday";
+    var startDay = days[new Date().getDate()];
     startDayIndex = days.indexOf(startDay);
     console.log(startDayIndex);
     daysShifted = days.splice(0, startDayIndex);
@@ -29,9 +29,6 @@ $(document).ready(function(){
     console.log(meals);
     msg += "\n\n\n";
     
-    var testp1 = "This is the first paragraph.\n";
-    var testp2 = "\nThis is the second paragraph.\n\n\n"; //ending with three newlines to space out the default "Sent from [app/device]" message at the bottom
-    console.log(encodeURI(testp1 + testp2));
     window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + encodeURI(msg));
     // console.log(encodeURI(JSON.stringify(meals)));
     // window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + encodeURI(JSON.stringify(meals)));
@@ -43,4 +40,10 @@ $(document).ready(function(){
 //        console.log(response);
 //        window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + msg);
 //    });
+
+    function restructureDays(){
+        $("option").each(function(i){
+            $(this).text(days[i]).attr("value", days[i]);
+        });
+    }
 });
