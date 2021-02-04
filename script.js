@@ -28,6 +28,7 @@
             } //end for loop
 
 ////////////////////////////////////////
+var nutritionDiv = $("<div>").addClass("box").appendTo("#recipeinfo");
 
             $(".recipebuttons").on("click", function(){
                 var v = $(this).attr("value");
@@ -38,21 +39,22 @@
             var recipeURL = response.results[v].sourceUrl;
             var recipeIngredients = JSON.stringify(response.results[v].nutrition.ingredients);
 
-            var nutritionDiv = $("<div>").addClass("box").appendTo("#recipeinfo");
+            nutritionDiv.empty();
              //dynamically append that info to the DOM
             $("<p>").text("Recipe Name: " + recipeName).appendTo(nutritionDiv);
             $("<p>").text("Recipe Calories: " + recipeCalories).appendTo(nutritionDiv);
             $("<p>").text("% of Daily Cal: " + recipeCaloriesPerc).appendTo(nutritionDiv);
             $("<img>").attr("src", recipeIMG).appendTo(nutritionDiv);
-            $("<a>").text(recipeURL).attr("src", recipeURL).appendTo(nutritionDiv);
-            $("<button>", {text: "Search"}).addClass("button is-dark pickrecipe").appendTo(nutritionDiv);
-            }); //end event listener for recipe choices
-
+            $("<a>").text(recipeURL).attr("href", recipeURL).attr("target", "_blank").appendTo(nutritionDiv);
+            $("<button>", {text: "Choose Recipe"}).addClass("button is-dark pickrecipe").appendTo(nutritionDiv);
             $(".pickrecipe").on("click", function(){
 
                 console.log("You Picked a Recipe!");
 
             }) //end event listener for selecting 
+            }); //end event listener for recipe choices
+
+            
            
             
         }) //ajax closers
