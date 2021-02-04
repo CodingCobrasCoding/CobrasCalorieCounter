@@ -75,7 +75,7 @@
             var daySelect = $("<div>").addClass("select is-warning").appendTo(notif);
             var select = $("<select>").attr("id", "fart").appendTo(daySelect);
             $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
-            $("<option selected>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
+            $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
             $("<option>").text("Wednesday").attr("value", "Wednesday").appendTo(select);
             $("<option>").text("Thursday").attr("value", "Thursday").appendTo(select);
             $("<option>").text("Friday").attr("value", "Friday").appendTo(select);
