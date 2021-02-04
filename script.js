@@ -12,7 +12,7 @@
             method: "GET"
         }).then(function(response){
           $("#recipeinfo").empty();
-          
+          console.log(response);
         //dynamically create buttons for each recipe to choose from
             for (var i = 0; i < 5; i++) {
             var recipeCalories = response.results[i].nutrition.nutrients[0].amount;
@@ -22,13 +22,13 @@
             var recipeURL = response.results[i].sourceUrl;
             var recipeIngredients = JSON.stringify(response.results[i].nutrition.ingredients);
             var recipeResults = response.results[i];
-            console.log(response);
+            
               //once they choose a recipe, dynamically create the nutirition info, recipes steps, and ingredients    
             $("<button>", {text: recipeName + "   -   " + recipeCalories + "Cal"}).addClass("button is-danger recipebuttons").attr("value", [i]).appendTo("#recipeinfo");
             } //end for loop
 
 ////////////////////////////////////////
-var nutritionDiv = $("<div>").addClass("box").appendTo("#recipeinfo");
+var nutritionDiv = $("<div>").addClass("container").appendTo("#recipeinfo");
 
             $(".recipebuttons").on("click", function(){
                 var v = $(this).attr("value");
@@ -45,16 +45,49 @@ var nutritionDiv = $("<div>").addClass("box").appendTo("#recipeinfo");
             $("<p>").text("Recipe Calories: " + recipeCalories).appendTo(nutritionDiv);
             $("<p>").text("% of Daily Cal: " + recipeCaloriesPerc).appendTo(nutritionDiv);
             $("<img>").attr("src", recipeIMG).appendTo(nutritionDiv);
-            $("<a>").text(recipeURL).attr("href", recipeURL).attr("target", "_blank").appendTo(nutritionDiv);
+            $("<a>").text("Link to Recipe").attr("href", recipeURL).attr("target", "_blank").appendTo(nutritionDiv);
             $("<button>", {text: "Choose Recipe"}).addClass("button is-dark pickrecipe").appendTo(nutritionDiv);
+
+            //event listener for pick a recipe
             $(".pickrecipe").on("click", function(){
 
-                console.log("You Picked a Recipe!");
+            console.log("You Picked a Recipe!");
+            var notif = $("<div>").addClass("notification is-link is-light").text("Choose a Day to Place Recipe");
+            $("<button>").addClass("delete").appendTo(notif);
 
-            }) //end event listener for selecting 
-            }); //end event listener for recipe choices
+            var daySelect = $("<div>").addClass("select is-warning").appendTo(notif);
+            var select = $("<select>").attr("id", "fart").appendTo(daySelect);
+            $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
+            $("<option selected>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
+            $("<option>").text("Wednesday").attr("value", "Wednesday").appendTo(select);
+            $("<option>").text("Thursday").attr("value", "Thursday").appendTo(select);
+            $("<option>").text("Friday").attr("value", "Friday").appendTo(select);
+            $("<option>").text("Saturday").attr("value", "Saturday").appendTo(select);
+            $("<option>").text("Sunday").attr("value", "Sunday").appendTo(select);
+                $("<button>", {text: "Confirm Date"}).addClass("button is-warning confirmdate").appendTo(notif);
 
             
+
+            notif.appendTo(nutritionDiv);
+
+                $(".delete").on("click", function(event){
+                    event.preventDefault();
+                    notif.remove();
+                }) //end delete button event listener
+
+            $(".confirmdate").on("click", function(event){
+                event.preventDefault();
+                
+                var dateChosen = $("#fart option:selected").val();
+
+                console.log(dateChosen);
+
+            })
+
+            }) //end event listener for pick recipe
+            }); //end event listener for recipe options
+
+
            
             
         }) //ajax closers
