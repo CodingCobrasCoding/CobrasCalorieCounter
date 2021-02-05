@@ -1,6 +1,13 @@
-
 //get current day and sort array correctly
-var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 var startDay = days[new Date().getDate()];
 startDayIndex = days.indexOf(startDay);
 // console.log(startDayIndex);
@@ -15,30 +22,28 @@ $("#day3").text(days[3]);
 $("#day4").text(days[4]);
 $("#day5").text(days[5]);
 $("#day6").text(days[6]);
-$("#pday0").attr("id", days[0]);
-$("#pday1").attr("id", days[1]);
-$("#pday2").attr("id", days[2]);
-$("#pday3").attr("id", days[3]);
-$("#pday4").attr("id", days[4]);
-$("#pday5").attr("id", days[5]);
-$("#pday6").attr("id", days[6]);
- 
+// $("#pday0").attr("id", days[0]);
+// $("#pday1").attr("id", days[1]);
+// $("#pday2").attr("id", days[2]);
+// $("#pday3").attr("id", days[3]);
+// $("#pday4").attr("id", days[4]);
+// $("#pday5").attr("id", days[5]);
+// $("#pday6").attr("id", days[6]);
 
 var mealPlan = [];
-if(localStorage.getItem("mealPlan")===null){
+if (localStorage.getItem("mealPlan") === null) {
   localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
-}
-else{
+} else {
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 }
 
-$("#recipeBtn").on("click", function(event){
+$("#recipeBtn").on("click", function (event) {
   event.preventDefault();
   //keys:
   //7f70f995f82545cbaa83258381c1bff9
   //3c48ac9f4fb24f0da8619831bed373c0
-  var apikey = "7f70f995f82545cbaa83258381c1bff9";
+  var apikey = "3c48ac9f4fb24f0da8619831bed373c0";
   var recipeInput = $("#recipeinput").val();
   var queryURL =
     "https://api.spoonacular.com/recipes/complexSearch?apiKey=" +
@@ -76,7 +81,7 @@ $("#recipeBtn").on("click", function(event){
         .appendTo("#recipeinfo");
     } //end for loop
 
-  ////////////////////////////////////////
+    ////////////////////////////////////////
     var nutritionDiv = $("<div>").addClass("container").appendTo("#recipeinfo");
 
     $(".recipebuttons").on("click", function () {
@@ -113,21 +118,24 @@ $("#recipeBtn").on("click", function(event){
         .appendTo(nutritionDiv);
 
       //event listener for pick a recipe
-      $(".pickrecipe").on("click", function(){
-
+      $(".pickrecipe").on("click", function () {
         // console.log("You Picked a Recipe!");
         var mealChosen = response.results[v];
         var meal = {
           name: mealChosen.title,
           link: mealChosen.sourceUrl,
           dayIndex: 0,
-        }
+        };
         console.log("You Picked a Recipe!");
         console.log(meal);
-        var notif = $("<div>").addClass("notification is-link is-light").text("Choose a Day to Place Recipe");
+        var notif = $("<div>")
+          .addClass("notification is-link is-light")
+          .text("Choose a Day to Place Recipe");
         $("<button>").addClass("delete").appendTo(notif);
 
-        var daySelect = $("<div>").addClass("select is-warning").appendTo(notif);
+        var daySelect = $("<div>")
+          .addClass("select is-warning")
+          .appendTo(notif);
         var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
         $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
         $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
@@ -149,7 +157,7 @@ $("#recipeBtn").on("click", function(event){
           .addClass("button is-warning confirmdate")
           .appendTo(notif);
 
-        notif.appendTo(nutritionDiv);
+        notif.appendTo($("#test"));
 
         function restructureDays() {
           $("option").each(function (i) {
@@ -166,7 +174,7 @@ $("#recipeBtn").on("click", function(event){
 
         $(".confirmdate").on("click", function (event) {
           event.preventDefault();
-                  
+
           var dateChosen = $("#chosen option:selected").val();
 
           console.log(dateChosen);
@@ -176,16 +184,25 @@ $("#recipeBtn").on("click", function(event){
           var pday = "#pday" + meal.dayIndex;
           console.log(pday);
           var delbtn = $("<button>").addClass("delete");
-          var itemEl = $("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a></p>").append(delbtn);
+          var itemEl = $("<div>")
+            .attr("class", "columns")
+            .attr("id", meal.name)
+            .html(
+              "<p>" +
+                meal.name +
+                "<br/><a href=" +
+                meal.link +
+                ">" +
+                meal.link +
+                "</a></p>"
+            )
+            .append(delbtn);
           $(pday).append(itemEl);
-          delbtn.click(function(){
+          delbtn.click(function () {
             $(this).parent().remove();
           });
-          
-        })
-        
-
-      }) //end event listener for pick recipe
+        });
+      }); //end event listener for pick recipe
     }); //end event listener for recipe options
   }); //ajax closers
 }); //recipeBtn click closers

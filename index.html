@@ -28,9 +28,8 @@
     </header>
 
     <!-- Ingredient search -->
-    <div class="box" style="margin-bottom: 50px; ">
-      
-        <div class="columns">
+    <div id="test" class="box" style="margin-bottom: 50px; ">
+    	<div class="columns">
           <div class="column is-one-third">
             <div class="field">
               <label class="label">Find a recipe</label>
@@ -47,13 +46,17 @@
             <div class="control">
               <button id="recipeBtn" class="button is-primary">Submit</button>
             </div>
+		</div>
+		</div>
+		<div class="columns">
             <div class="column is-two-thirds">
               <div id="recipeinfo" class="container"></div>
             </div>
           </div>
-        </div>
+        
     
     </div>
+	
 
     <!-- Calendar -->
     <!-- <div class="container"> -->
@@ -63,14 +66,14 @@
           <section class="accordions">
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p id="day0">Monday</p>
+                <p id="day0"></p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
-					Text
+					
                   <div class="columns">
 					  <div class="column" id="pday0"></div>
-					<div class="column is-one-third is-offset-8">
+					<div class="column is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -115,7 +118,7 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p id="day1">Tuesday</p>
+                <p id="day1"></p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
@@ -134,13 +137,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p id="day2">Wednesday</p>
+                <p id="day2"></p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                  <div class="columns">
 					 <div class="column" id="pday2"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea"
@@ -153,13 +156,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Thursday</p>
+                <p id="day3"></p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday3"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -172,13 +175,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Friday</p>
+                <p id="day4"></p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday4"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -191,13 +194,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Saturday</p>
+                <p id="day5"></p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday5"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea"
@@ -210,13 +213,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Sunday</p>
+                <p id="day6"></p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday6"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -228,6 +231,7 @@
               </div>
             </article>
           </section>
+		
 		 <button id="emailBtn" class="button is-success " style="margin-top: 10px;">Send meals to e-mail</button> 
         </div>
       </div>
