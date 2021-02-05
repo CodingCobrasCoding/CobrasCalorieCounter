@@ -1,254 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>🐍 CALORIE COUNTER</title>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-		/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TITLE</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
 
-		<link rel="stylesheet" href="./style.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	</head>
-	<script src="./dist/bulma.js"></script>
-	<link rel="stylesheet" href="./dist/bulma-accordion.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <script src="./dist/bulma.js"></script>
+  <link rel="stylesheet" href="./dist/bulma-accordion.min.css" />
 
-	<body class="is-mobile">
-		<header class="container">
-			<div
-				class="box"
-				style="background-color: darkorchid; width: 50%; margin: auto"
-			>
-				<h1
-					style="
-						text-align: center;
-						font-weight: bolder;
-						color: white;
-					"
-				>
-					🐍 COBRAS CALORIE COUNTER 🐍
-				</h1>
-			</div>
-		</header>
+  <body class="is-mobile">
+    <header class="container">
+      <div
+        class="box"
+        style="background-color: darkorchid; width: 50%; margin: auto"
+      >
+        <h1 style="text-align: center; font-weight: bolder; color: white">
+          🐍 COBRAS CALORIE COUNTER 🐍
+        </h1>
+      </div>
+    </header>
 
-		<div class="container" style="margin-bottom: 50px">
-			<div class="box">
-				<div class="columns">
-					<div class="column is-one-third">
-						<div class="field">
-							<label class="label">Find a recipe</label>
-							<div class="control">
-								<input
-									id="recipeinput"
-									class="input"
-									type="text"
-									placeholder="Enter any ingredient"
-								/>
-							</div>
-						</div>
+    <!-- Ingredient search -->
+    <div class="box" style="margin-bottom: 50px; ">
+      
+        <div class="columns">
+          <div class="column is-one-third">
+            <div class="field">
+              <label class="label">Find a recipe</label>
+              <div class="control">
+                <input
+                  id="recipeinput"
+                  class="input"
+                  type="text"
+                  placeholder="Enter any ingredient"
+                />
+              </div>
+            </div>
 
-						<div class="control">
-							<button id="recipeBtn" class="button is-primary">
-								Submit
-							</button>
-						</div>
-						<div class="column is-two-thirds">
-							<div id="recipeinfo" class="container"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+            <div class="control">
+              <button id="recipeBtn" class="button is-primary">Submit</button>
+            </div>
+            <div class="column is-two-thirds">
+              <div id="recipeinfo" class="container"></div>
+            </div>
+          </div>
+        </div>
+    
+    </div>
 
-		<!-- Calendar -->
+    <!-- Calendar -->
+    <!-- <div class="container"> -->
+		<div class="box">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <section class="accordions">
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p id="day0">Monday</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+					Text
+                  <div class="columns">
+					  <div class="column" id="pday0"></div>
+					<div class="column is-one-third is-offset-8">
+                    <div class="control">
+                      <textarea
+                        class="textarea "
+                        placeholder="Notes"
+                      ></textarea>
+                    </div>
 
-		<div class="container">
-			<section class="accordions">
-				<article class="accordion is-active">
-					<div class="accordion-header toggle">
-						<p id="day0">Monday</p>
-					</div>
-					<div class="accordion-body">
-						<div class="accordion-content">
-							<div class="columns">
-								<div class="column">
-									<p class="bd-notification is-info">
-										Breakfast
-									</p>
-								</div>
-							</div>
-							<div class="columns">
-								<div class="column">
-									<p class="bd-notification is-info">
-										Breakfast
-									</p>
-								</div>
-							</div>
-							<div class="columns">
-								<div class="column">
-									<p class="bd-notification is-info">
-										Breakfast
-									</p>
-								</div>
-							</div>
-							<div class="columns">
-								<div class="column">
-									<p class="bd-notification is-info">
-										Breakfast
-									</p>
-								</div>
-							</div>
-							<div class="columns">
-								<div class="column">
-									<p class="bd-notification is-info">
-										Breakfast
-									</p>
-								</div>
-							</div>
-							<div class="columns">
-								<div class="column">
-									<p class="bd-notification is-info">
-										Breakfast
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</article>
-				<article class="accordion">
-					<div class="accordion-header toggle">
-						<p id="day1">Tuesday</p>
-					</div>
-					<div class="accordion-body">
-						<div class="accordion-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.
-							<strong>Pellentesque risus mi</strong>, tempus quis
-							placerat ut, porta nec nulla. Vestibulum rhoncus ac
-							ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum <a>felis venenatis</a> efficitur. Aenean ac
-							<em>eleifend lacus</em>, in mollis lectus. Donec
-							sodales, arcu et sollicitudin porttitor, tortor urna
-							tempor ligula, id porttitor mi magna a neque. Donec
-							dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</div>
-				</article>
-				<article class="accordion">
-					<div class="accordion-header toggle">
-						<p id="day2">Wednesday</p>
-					</div>
-					<div class="accordion-body">
-						<div class="accordion-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.
-							<strong>Pellentesque risus mi</strong>, tempus quis
-							placerat ut, porta nec nulla. Vestibulum rhoncus ac
-							ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum <a>felis venenatis</a> efficitur. Aenean ac
-							<em>eleifend lacus</em>, in mollis lectus. Donec
-							sodales, arcu et sollicitudin porttitor, tortor urna
-							tempor ligula, id porttitor mi magna a neque. Donec
-							dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</div>
-				</article>
-				<article class="accordion">
-					<div class="accordion-header toggle">
-						<p>Thursday</p>
-					</div>
-					<div class="accordion-body">
-						<div class="accordion-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.
-							<strong>Pellentesque risus mi</strong>, tempus quis
-							placerat ut, porta nec nulla. Vestibulum rhoncus ac
-							ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum <a>felis venenatis</a> efficitur. Aenean ac
-							<em>eleifend lacus</em>, in mollis lectus. Donec
-							sodales, arcu et sollicitudin porttitor, tortor urna
-							tempor ligula, id porttitor mi magna a neque. Donec
-							dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</div>
-				</article>
-				<article class="accordion">
-					<div class="accordion-header toggle">
-						<p>Friday</p>
-					</div>
-					<div class="accordion-body">
-						<div class="accordion-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.
-							<strong>Pellentesque risus mi</strong>, tempus quis
-							placerat ut, porta nec nulla. Vestibulum rhoncus ac
-							ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum <a>felis venenatis</a> efficitur. Aenean ac
-							<em>eleifend lacus</em>, in mollis lectus. Donec
-							sodales, arcu et sollicitudin porttitor, tortor urna
-							tempor ligula, id porttitor mi magna a neque. Donec
-							dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</div>
-				</article>
-				<article class="accordion">
-					<div class="accordion-header toggle">
-						<p>Saturday</p>
-					</div>
-					<div class="accordion-body">
-						<div class="accordion-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.
-							<strong>Pellentesque risus mi</strong>, tempus quis
-							placerat ut, porta nec nulla. Vestibulum rhoncus ac
-							ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum <a>felis venenatis</a> efficitur. Aenean ac
-							<em>eleifend lacus</em>, in mollis lectus. Donec
-							sodales, arcu et sollicitudin porttitor, tortor urna
-							tempor ligula, id porttitor mi magna a neque. Donec
-							dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</div>
-				</article>
-				<article class="accordion">
-					<div class="accordion-header toggle">
-						<p>Sunday</p>
-					</div>
-					<div class="accordion-body">
-						<div class="accordion-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing
-							elit.
-							<strong>Pellentesque risus mi</strong>, tempus quis
-							placerat ut, porta nec nulla. Vestibulum rhoncus ac
-							ex sit amet fringilla. Nullam gravida purus diam, et
-							dictum <a>felis venenatis</a> efficitur. Aenean ac
-							<em>eleifend lacus</em>, in mollis lectus. Donec
-							sodales, arcu et sollicitudin porttitor, tortor urna
-							tempor ligula, id porttitor mi magna a neque. Donec
-							dui urna, vehicula et sem eget, facilisis sodales
-							sem.
-						</div>
-					</div>
-				</article>
-			</section>
-		</div>
+                    <!-- FOr time periods in the day -->
+                    <!-- <div class="columns">
+                <div class="column">
+                  <p class="bd-notification is-info">Breakfast</p>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <p class="bd-notification is-info">Breakfast</p>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <p class="bd-notification is-info">Breakfast</p>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <p class="bd-notification is-info">Breakfast</p>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <p class="bd-notification is-info">Breakfast</p>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <p class="bd-notification is-info">Breakfast</p>
+                </div>
+              </div> -->
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p id="day1">Tuesday</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <div class="columns">
+					  <div class="column" id="pday1"></div>
+					  <div class="column is is-one-third is-offset-8">
+                    <div class="control">
+                      <textarea
+                        class="textarea "
+                        placeholder="Notes"
+                      ></textarea>
+                    </div>
+					  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p id="day2">Wednesday</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                 <div class="columns">
+					 <div class="column" id="pday2"></div>
+					  <div class="column is is-one-third is-offset-8">
+                    <div class="control">
+                      <textarea
+                        class="textarea"
+                        placeholder="Notes"
+                      ></textarea>
+                    </div>
+					  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Thursday</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <div class="columns">
+					  <div class="column" id="pday3"></div>
+					  <div class="column is is-one-third is-offset-8">
+                    <div class="control">
+                      <textarea
+                        class="textarea "
+                        placeholder="Notes"
+                      ></textarea>
+                    </div>
+					  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Friday</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <div class="columns">
+					  <div class="column" id="pday4"></div>
+					  <div class="column is is-one-third is-offset-8">
+                    <div class="control">
+                      <textarea
+                        class="textarea "
+                        placeholder="Notes"
+                      ></textarea>
+                    </div>
+					  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Saturday</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <div class="columns">
+					  <div class="column" id="pday5"></div>
+					  <div class="column is is-one-third is-offset-8">
+                    <div class="control">
+                      <textarea
+                        class="textarea"
+                        placeholder="Notes"
+                      ></textarea>
+                    </div>
+					  </div>
+                </div>
+              </div>
+            </article>
+            <article class="accordion">
+              <div class="accordion-header toggle">
+                <p>Sunday</p>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-content">
+                  <div class="columns">
+					  <div class="column" id="pday6"></div>
+					  <div class="column is is-one-third is-offset-8">
+                    <div class="control">
+                      <textarea
+                        class="textarea "
+                        placeholder="Notes"
+                      ></textarea>
+                    </div>
+					  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+		 <button id="emailBtn" class="button is-success " style="margin-top: 10px;">Send meals to e-mail</button> 
+        </div>
+      </div>
+	  </div>
+    <!-- </div> -->
 
-		<!-- Calendar -->
-
-		<script src="script.js"></script>
-		<script
-			type="text/javascript"
-			src="https://cdn.jsdelivr.net/npm/bulma-accordion@2.0.1/dist/js/bulma-accordion.min.js"
-		></script>
-		<script>
-			bulmaAccordion.attach();
-		</script>
-	</body>
+    <script src="script.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/bulma-accordion@2.0.1/dist/js/bulma-accordion.min.js"
+    ></script>
+    <script>
+      bulmaAccordion.attach();
+    </script>
+  </body>
 </html>
