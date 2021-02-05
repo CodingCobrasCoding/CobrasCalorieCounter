@@ -127,7 +127,7 @@ $("#recipeBtn").on("click", function (event) {
           calories: mealChosen.nutrition.nutrients[0].amount,
           percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds,
           dayIndex: 0,
-        };
+        }
         console.log("You Picked a Recipe!");
         console.log(meal);
         var notif = $("<div>")
@@ -181,6 +181,7 @@ $("#recipeBtn").on("click", function (event) {
 
           console.log(dateChosen);
           meal.dayIndex = days.indexOf(dateChosen);
+          console.log(meal.dayIndex);
           mealPlan.push(meal); //add meal object to our mealPlan array
           localStorage.setItem("mealPlan", JSON.stringify(mealPlan)); //store the updated array in localStorage
           var pday = "#pday" + meal.dayIndex;
@@ -207,11 +208,33 @@ $("#recipeBtn").on("click", function (event) {
             )
             .append(delbtn);
           $(pday).append(itemEl);
-          delbtn.click(function () {
+          console.log("appended");
+          delbtn.click(function(){
             $(this).parent().remove();
           });
-        });
-      }); //end event listener for pick recipe
+          $(this).parent().remove();
+          
+        })
+        
+      }) //end event listener for pick recipe
     }); //end event listener for recipe options
   }); //ajax closers
 }); //recipeBtn click closers
+
+$("#emailBtn").click(function(event){
+  event.preventDefault();
+  var email = $("#emailForm").val(); //use a selector to get their email from a text box once this is working
+  var daysText = []; //text for each individual day, each element being a string with "[day name]: [recipes]"
+  days.forEach(function(day){
+    daysText.push(day + ": \n");
+  });
+  var msg = ""; //the full body of the email
+  mealPlan.forEach(function(meal){
+    daysText[meal.dayIndex] += "\n" + meal.name + " | " + meal.percent + "% D/V";
+  });
+  daysText.forEach(function(day){
+    msg += day + "\n\n\n";
+  });
+  console.log(msg);
+  window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + encodeURI(msg));
+});
