@@ -15,13 +15,13 @@ $("#day3").text(days[3]);
 $("#day4").text(days[4]);
 $("#day5").text(days[5]);
 $("#day6").text(days[6]);
-$("#pday0").attr("id", days[0]);
-$("#pday1").attr("id", days[1]);
-$("#pday2").attr("id", days[2]);
-$("#pday3").attr("id", days[3]);
-$("#pday4").attr("id", days[4]);
-$("#pday5").attr("id", days[5]);
-$("#pday6").attr("id", days[6]);
+// $("#pday0").attr("id", days[0]);
+// $("#pday1").attr("id", days[1]);
+// $("#pday2").attr("id", days[2]);
+// $("#pday3").attr("id", days[3]);
+// $("#pday4").attr("id", days[4]);
+// $("#pday5").attr("id", days[5]);
+// $("#pday6").attr("id", days[6]);
  
 
 var mealPlan = [];
@@ -38,7 +38,7 @@ $("#recipeBtn").on("click", function(event){
   //keys:
   //7f70f995f82545cbaa83258381c1bff9
   //3c48ac9f4fb24f0da8619831bed373c0
-  var apikey = "7f70f995f82545cbaa83258381c1bff9";
+  var apikey = "3c48ac9f4fb24f0da8619831bed373c0";
   var recipeInput = $("#recipeinput").val();
   var queryURL =
     "https://api.spoonacular.com/recipes/complexSearch?apiKey=" +
@@ -121,6 +121,8 @@ $("#recipeBtn").on("click", function(event){
           name: mealChosen.title,
           link: mealChosen.sourceUrl,
           dayIndex: 0,
+          calories: mealChosen.nutrition.nutrients[0].amount,
+          percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds
         }
         console.log("You Picked a Recipe!");
         console.log(meal);
@@ -171,6 +173,7 @@ $("#recipeBtn").on("click", function(event){
 
           console.log(dateChosen);
           meal.dayIndex = days.indexOf(dateChosen);
+          console.log(meal.dayIndex);
           mealPlan.push(meal); //add meal object to our mealPlan array
           localStorage.setItem("mealPlan", JSON.stringify(mealPlan)); //store the updated array in localStorage
           var pday = "#pday" + meal.dayIndex;
@@ -178,14 +181,33 @@ $("#recipeBtn").on("click", function(event){
           var delbtn = $("<button>").addClass("delete");
           var itemEl = $("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a></p>").append(delbtn);
           $(pday).append(itemEl);
+          console.log("appended");
           delbtn.click(function(){
             $(this).parent().remove();
           });
+          $(this).parent().remove();
           
         })
         
-
       }) //end event listener for pick recipe
     }); //end event listener for recipe options
   }); //ajax closers
 }); //recipeBtn click closers
+
+$("#emailBtn").click(function(event){
+  event.preventDefault();
+  var email = $("#emailForm").val(); //use a selector to get their email from a text box once this is working
+  var daysText = []; //text for each individual day, each element being a string with "[day name]: [recipes]"
+  days.forEach(function(day){
+    daysText.push(day + ": \n");
+  });
+  var msg = ""; //the full body of the email
+  mealPlan.forEach(function(meal){
+    daysText[meal.dayIndex] += "\n" + meal.name + " | " + meal.percent + "% D/V";
+  });
+  daysText.forEach(function(day){
+    msg += day + "\n\n\n";
+  });
+  console.log(msg);
+  window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + encodeURI(msg));
+});

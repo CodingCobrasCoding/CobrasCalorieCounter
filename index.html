@@ -47,11 +47,12 @@
             <div class="control">
               <button id="recipeBtn" class="button is-primary">Submit</button>
             </div>
-            <div class="column is-two-thirds">
-              <div id="recipeinfo" class="container"></div>
-            </div>
-          </div>
+		</div>
+        <div class="column is-two-thirds">
+            <div id="recipeinfo" class="container"></div>
         </div>
+        
+    </div>
     
     </div>
 
@@ -67,10 +68,9 @@
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
-					Text
                   <div class="columns">
 					  <div class="column" id="pday0"></div>
-					<div class="column is-one-third is-offset-8">
+					<div class="column is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -140,7 +140,7 @@
                 <div class="accordion-content">
                  <div class="columns">
 					 <div class="column" id="pday2"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea"
@@ -153,13 +153,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Thursday</p>
+                <p id="day3">Thursday</p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday3"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -172,13 +172,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Friday</p>
+                <p id="day4">Friday</p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday4"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -191,13 +191,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Saturday</p>
+                <p id="day5">Saturday</p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday5"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea"
@@ -210,13 +210,13 @@
             </article>
             <article class="accordion">
               <div class="accordion-header toggle">
-                <p>Sunday</p>
+                <p id="day6">Sunday</p>
               </div>
               <div class="accordion-body">
                 <div class="accordion-content">
                   <div class="columns">
 					  <div class="column" id="pday6"></div>
-					  <div class="column is is-one-third is-offset-8">
+					  <div class="column is is-one-third">
                     <div class="control">
                       <textarea
                         class="textarea "
@@ -228,13 +228,13 @@
               </div>
             </article>
           </section>
-		 <button id="emailBtn" class="button is-success " style="margin-top: 10px;">Send meals to e-mail</button> 
+		 <button id="emailBtn" class="button is-success" style="margin-top: 10px;">Send meals to e-mail</button> 
         </div>
       </div>
 	  </div>
     <!-- </div> -->
 
-    <script src="script.js"></script>
+    
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/bulma-accordion@2.0.1/dist/js/bulma-accordion.min.js"
@@ -242,5 +242,6 @@
     <script>
       bulmaAccordion.attach();
     </script>
+	<script src="script.js"></script>
   </body>
 </html>
