@@ -1,13 +1,6 @@
+
 //get current day and sort array correctly
-var days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var startDay = days[new Date().getDate()];
 startDayIndex = days.indexOf(startDay);
 console.log(startDayIndex);
@@ -19,7 +12,16 @@ $("#day0").text(days[0]);
 $("#day1").text(days[1]);
 $("#day2").text(days[2]);
 
-$("#recipeBtn").on("click", function (event) {
+var mealPlan = [];
+if(localStorage.getItem("mealPlan")===null){
+  localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
+  mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
+}
+else{
+  mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
+}
+
+$("#recipeBtn").on("click", function(event){
   event.preventDefault();
   //keys:
   //7f70f995f82545cbaa83258381c1bff9
@@ -62,7 +64,7 @@ $("#recipeBtn").on("click", function (event) {
         .appendTo("#recipeinfo");
     } //end for loop
 
-    ////////////////////////////////////////
+  ////////////////////////////////////////
     var nutritionDiv = $("<div>").addClass("container").appendTo("#recipeinfo");
 
     $(".recipebuttons").on("click", function () {
@@ -99,17 +101,20 @@ $("#recipeBtn").on("click", function (event) {
         .appendTo(nutritionDiv);
 
       //event listener for pick a recipe
-      $(".pickrecipe").on("click", function () {
+      $(".pickrecipe").on("click", function(){
+        var mealChosen = response.results[v];
+        var meal = {
+          name: mealChosen.title,
+          link: mealChosen.sourceUrl,
+          dayIndex: 0,
+        }
         console.log("You Picked a Recipe!");
-        var notif = $("<div>")
-          .addClass("notification is-link is-light")
-          .text("Choose a Day to Place Recipe");
+        console.log(meal);
+        var notif = $("<div>").addClass("notification is-link is-light").text("Choose a Day to Place Recipe");
         $("<button>").addClass("delete").appendTo(notif);
 
-        var daySelect = $("<div>")
-          .addClass("select is-warning")
-          .appendTo(notif);
-        var select = $("<select>").attr("id", "fart").appendTo(daySelect);
+        var daySelect = $("<div>").addClass("select is-warning").appendTo(notif);
+        var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
         $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
         $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
         $("<option>")
@@ -147,12 +152,20 @@ $("#recipeBtn").on("click", function (event) {
 
         $(".confirmdate").on("click", function (event) {
           event.preventDefault();
-
-          var dateChosen = $("#fart option:selected").val();
+                  
+          var dateChosen = $("#chosen option:selected").val();
 
           console.log(dateChosen);
-        });
-      }); //end event listener for pick recipe
+          meal.dayIndex = days.indexOf(dateChosen);
+          mealPlan.push(meal); //add meal object to our mealPlan array
+          localStorage.setItem("mealPlan", JSON.stringify(mealPlan)); //store the updated array in localStorage
+          var pday = "#pday" + meal.dayIndex;
+          console.log(pday);
+          $(pday).append($("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a></p>"));
+        })
+        
+
+      }) //end event listener for pick recipe
     }); //end event listener for recipe options
   }); //ajax closers
 }); //recipeBtn click closers
