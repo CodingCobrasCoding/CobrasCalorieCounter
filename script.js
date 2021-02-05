@@ -1,4 +1,17 @@
 
+ //get current day and sort array correctly
+          var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var startDay = days[new Date().getDate()];
+          startDayIndex = days.indexOf(startDay);
+          console.log(startDayIndex);
+          daysShifted = days.splice(0, startDayIndex);
+          console.log(daysShifted);
+          days = days.concat(daysShifted);
+          //now the days should be sorted from current day
+          $("#day0").text(days[0]);
+          $("#day1").text(days[1]);
+          $("#day2").text(days[2]);
+ 
  $("#recipeBtn").on("click", function(event){
     event.preventDefault();
         //keys:
@@ -19,15 +32,6 @@
         }).then(function(response){
           $("#recipeinfo").empty();
           console.log(response);
-          //get current day and sort array correctly
-          var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          var startDay = days[new Date().getDate()];
-          startDayIndex = days.indexOf(startDay);
-          console.log(startDayIndex);
-          daysShifted = days.splice(0, startDayIndex);
-          console.log(daysShifted);
-          days = days.concat(daysShifted);
-          //now the days should be sorted from current day
           
           
         //dynamically create buttons for each recipe to choose from
