@@ -3,9 +3,9 @@
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 var startDay = days[new Date().getDate()];
 startDayIndex = days.indexOf(startDay);
-console.log(startDayIndex);
+// console.log(startDayIndex);
 daysShifted = days.splice(0, startDayIndex);
-console.log(daysShifted);
+// console.log(daysShifted);
 days = days.concat(daysShifted);
 //now the days should be sorted from current day
 $("#day0").text(days[0]);
@@ -76,7 +76,7 @@ $("#recipeBtn").on("click", function(event){
       //event listener for pick a recipe
       $(".pickrecipe").on("click", function(){
 
-        console.log("You Picked a Recipe!");
+        // console.log("You Picked a Recipe!");
         var notif = $("<div>").addClass("notification is-link is-light").text("Choose a Day to Place Recipe");
         $("<button>").addClass("delete").appendTo(notif);
 
@@ -97,7 +97,7 @@ $("#recipeBtn").on("click", function(event){
         function restructureDays(){
           $("option").each(function(i){
             $(this).text(days[i]).attr("value", days[i]);
-            console.log($(this).text());
+            // console.log($(this).text());
           });
         }
         restructureDays();
