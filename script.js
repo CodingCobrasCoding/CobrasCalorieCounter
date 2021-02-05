@@ -11,6 +11,10 @@ days = days.concat(daysShifted);
 $("#day0").text(days[0]);
 $("#day1").text(days[1]);
 $("#day2").text(days[2]);
+$("#day3").text(days[3]);
+$("#day4").text(days[4]);
+$("#day5").text(days[5]);
+$("#day6").text(days[6]);
  
 $("#recipeBtn").on("click", function(event){
   event.preventDefault();
