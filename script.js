@@ -29,6 +29,10 @@ $("#day6").text(days[6]);
 // $("#pday4").attr("id", days[4]);
 // $("#pday5").attr("id", days[5]);
 // $("#pday6").attr("id", days[6]);
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> main
 
 var mealPlan = [];
 if (localStorage.getItem("mealPlan") === null) {
@@ -124,6 +128,8 @@ $("#recipeBtn").on("click", function (event) {
         var meal = {
           name: mealChosen.title,
           link: mealChosen.sourceUrl,
+          calories: mealChosen.nutrition.nutrients[0].amount,
+          percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds,
           dayIndex: 0,
         };
         console.log("You Picked a Recipe!");
@@ -183,7 +189,9 @@ $("#recipeBtn").on("click", function (event) {
           localStorage.setItem("mealPlan", JSON.stringify(mealPlan)); //store the updated array in localStorage
           var pday = "#pday" + meal.dayIndex;
           console.log(pday);
+          var hundred = (100 - meal.percent);
           var delbtn = $("<button>").addClass("delete");
+<<<<<<< HEAD
           var itemEl = $("<div>")
             .attr("class", "columns")
             .attr("id", meal.name)
@@ -197,6 +205,9 @@ $("#recipeBtn").on("click", function (event) {
                 "</a></p>"
             )
             .append(delbtn);
+=======
+          var itemEl = $("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a><br/>" + meal.calories + " - Calories <br/>" + meal.percent + " - % of Daily Calories <br/>" + hundred + " - % of Daily Left</p>").append(delbtn);
+>>>>>>> main
           $(pday).append(itemEl);
           delbtn.click(function () {
             $(this).parent().remove();
