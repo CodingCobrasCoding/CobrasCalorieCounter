@@ -1,6 +1,13 @@
-
 //get current day and sort array correctly
-var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 var startDay = days[new Date().getDate()];
 startDayIndex = days.indexOf(startDay);
 // console.log(startDayIndex);
@@ -25,15 +32,14 @@ $("#day6").text(days[6]);
  
 
 var mealPlan = [];
-if(localStorage.getItem("mealPlan")===null){
+if (localStorage.getItem("mealPlan") === null) {
   localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
-}
-else{
+} else {
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 }
 
-$("#recipeBtn").on("click", function(event){
+$("#recipeBtn").on("click", function (event) {
   event.preventDefault();
   //keys:
   //7f70f995f82545cbaa83258381c1bff9
@@ -76,7 +82,7 @@ $("#recipeBtn").on("click", function(event){
         .appendTo("#recipeinfo");
     } //end for loop
 
-  ////////////////////////////////////////
+    ////////////////////////////////////////
     var nutritionDiv = $("<div>").addClass("container").appendTo("#recipeinfo");
 
     $(".recipebuttons").on("click", function () {
@@ -113,23 +119,28 @@ $("#recipeBtn").on("click", function(event){
         .appendTo(nutritionDiv);
 
       //event listener for pick a recipe
-      $(".pickrecipe").on("click", function(){
-
+      $(".pickrecipe").on("click", function () {
         // console.log("You Picked a Recipe!");
         var mealChosen = response.results[v];
         var meal = {
           name: mealChosen.title,
           link: mealChosen.sourceUrl,
+          calories: mealChosen.nutrition.nutrients[0].amount,
+          percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds,
           dayIndex: 0,
           calories: mealChosen.nutrition.nutrients[0].amount,
           percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds
         }
         console.log("You Picked a Recipe!");
         console.log(meal);
-        var notif = $("<div>").addClass("notification is-link is-light").text("Choose a Day to Place Recipe");
+        var notif = $("<div>")
+          .addClass("notification is-link is-light")
+          .text("Choose a Day to Place Recipe");
         $("<button>").addClass("delete").appendTo(notif);
 
-        var daySelect = $("<div>").addClass("select is-warning").appendTo(notif);
+        var daySelect = $("<div>")
+          .addClass("select is-warning")
+          .appendTo(notif);
         var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
         $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
         $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
@@ -151,7 +162,7 @@ $("#recipeBtn").on("click", function(event){
           .addClass("button is-warning confirmdate")
           .appendTo(notif);
 
-        notif.appendTo(nutritionDiv);
+        notif.appendTo($("#test"));
 
         function restructureDays() {
           $("option").each(function (i) {
@@ -168,7 +179,7 @@ $("#recipeBtn").on("click", function(event){
 
         $(".confirmdate").on("click", function (event) {
           event.preventDefault();
-                  
+
           var dateChosen = $("#chosen option:selected").val();
 
           console.log(dateChosen);
@@ -178,8 +189,9 @@ $("#recipeBtn").on("click", function(event){
           localStorage.setItem("mealPlan", JSON.stringify(mealPlan)); //store the updated array in localStorage
           var pday = "#pday" + meal.dayIndex;
           console.log(pday);
+          var hundred = (100 - meal.percent);
           var delbtn = $("<button>").addClass("delete");
-          var itemEl = $("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a></p>").append(delbtn);
+          var itemEl = $("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a><br/>" + meal.calories + " - Calories <br/>" + meal.percent + " - % of Daily Calories <br/>" + hundred + " - % of Daily Left</p>").append(delbtn);
           $(pday).append(itemEl);
           console.log("appended");
           delbtn.click(function(){
