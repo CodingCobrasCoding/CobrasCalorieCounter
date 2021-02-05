@@ -15,6 +15,13 @@ $("#day3").text(days[3]);
 $("#day4").text(days[4]);
 $("#day5").text(days[5]);
 $("#day6").text(days[6]);
+$("#pday0").attr("id", days[0]);
+$("#pday1").attr("id", days[1]);
+$("#pday2").attr("id", days[2]);
+$("#pday3").attr("id", days[3]);
+$("#pday4").attr("id", days[4]);
+$("#pday5").attr("id", days[5]);
+$("#pday6").attr("id", days[6]);
  
 $("#recipeBtn").on("click", function(event){
   event.preventDefault();
@@ -81,7 +88,7 @@ $("#recipeBtn").on("click", function(event){
         $("<button>").addClass("delete").appendTo(notif);
 
         var daySelect = $("<div>").addClass("select is-warning").appendTo(notif);
-        var select = $("<select>").attr("id", "fart").appendTo(daySelect);
+        var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
         $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
         $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
         $("<option>").text("Wednesday").attr("value", "Wednesday").appendTo(select);
@@ -110,9 +117,15 @@ $("#recipeBtn").on("click", function(event){
         $(".confirmdate").on("click", function(event){
           event.preventDefault();
                   
-          var dateChosen = $("#fart option:selected").val();
+          var dateChosen = $("#chosen option:selected").val();
 
           console.log(dateChosen);
+
+        //CONDITIONAL STATEMENT
+        if (dateChosen === "Monday") {
+          $("#Monday").text(recipeName + recipeCalories + recipeCaloriesPerc);
+          $("<button>").addClass("delete").appendTo("#Monday");
+        } else{}
 
         })
 
