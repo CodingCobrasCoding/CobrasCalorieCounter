@@ -29,10 +29,6 @@ $("#day6").text(days[6]);
 // $("#pday4").attr("id", days[4]);
 // $("#pday5").attr("id", days[5]);
 // $("#pday6").attr("id", days[6]);
-<<<<<<< HEAD
-=======
- 
->>>>>>> a7b5516549a7c0f14c3c2307824a4f0b39b861b3
 
 var mealPlan = [];
 if (localStorage.getItem("mealPlan") === null) {
@@ -191,7 +187,6 @@ $("#recipeBtn").on("click", function (event) {
           console.log(pday);
           var hundred = 100 - meal.percent;
           var delbtn = $("<button>").addClass("delete");
-<<<<<<< HEAD
           var itemEl = $("<div>")
             .attr("class", "columns")
             .attr("id", meal.name)
@@ -211,9 +206,6 @@ $("#recipeBtn").on("click", function (event) {
                 " - % of Daily Left</p>"
             )
             .append(delbtn);
-=======
-          var itemEl = $("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a><br/>" + meal.calories + " - Calories <br/>" + meal.percent + " - % of Daily Calories <br/>" + hundred + " - % of Daily Left</p>").append(delbtn);
->>>>>>> a7b5516549a7c0f14c3c2307824a4f0b39b861b3
           $(pday).append(itemEl);
           delbtn.click(function () {
             $(this).parent().remove();
