@@ -161,7 +161,13 @@ $("#recipeBtn").on("click", function(event){
           localStorage.setItem("mealPlan", JSON.stringify(mealPlan)); //store the updated array in localStorage
           var pday = "#pday" + meal.dayIndex;
           console.log(pday);
-          $(pday).append($("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a></p>"));
+          var delbtn = $("<button>").addClass("delete");
+          var itemEl = $("<div>").attr("class", "columns").attr("id",meal.name).html("<p>" +meal.name + "<br/><a href=" + meal.link + ">" + meal.link + "</a></p>").append(delbtn);
+          $(pday).append(itemEl);
+          delbtn.click(function(){
+            $(this).parent().remove();
+          });
+          
         })
         
 
