@@ -109,7 +109,7 @@ $("#recipeBtn").on("click", function (event) {
         var daySelect = $("<div>")
           .addClass("select is-warning")
           .appendTo(notif);
-        var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
+        var select = $("<select>").attr("id", "fart").appendTo(daySelect);
         $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
         $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
         $("<option>")
@@ -148,7 +148,7 @@ $("#recipeBtn").on("click", function (event) {
         $(".confirmdate").on("click", function (event) {
           event.preventDefault();
 
-          var dateChosen = $("#chosen option:selected").val();
+          var dateChosen = $("#fart option:selected").val();
 
           console.log(dateChosen);
         });
