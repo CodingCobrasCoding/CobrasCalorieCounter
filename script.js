@@ -128,8 +128,6 @@ $("#recipeBtn").on("click", function (event) {
           calories: mealChosen.nutrition.nutrients[0].amount,
           percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds,
           dayIndex: 0,
-          calories: mealChosen.nutrition.nutrients[0].amount,
-          percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds
         }
         console.log("You Picked a Recipe!");
         console.log(meal);
