@@ -115,6 +115,7 @@ $("#recipeBtn").on("click", function (event) {
         .addClass("button is-dark pickrecipe")
         .addClass("column")
         .appendTo(nutritionDiv);
+      nutritionDiv.addClass("nutrBorder");
 
       //event listener for pick a recipe
       $(".pickrecipe").on("click", function () {
