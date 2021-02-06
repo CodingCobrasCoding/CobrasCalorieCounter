@@ -33,6 +33,36 @@ if (localStorage.getItem("mealPlan") === null) {
 
 $("#recipeBtn").on("click", function (event) {
   event.preventDefault();
+  $("#mealbtn").empty();
+  $("#recipeinfo").empty();
+  //Make notif early and append later when we need to
+  var notif = $("<div>").attr("id","notifDiv").addClass("notification is-link is-light").text("Choose a Day to Place Recipe");
+  $("<button>").addClass("delete").appendTo(notif);
+  var daySelect = $("<div>")
+          .addClass("select is-warning")
+          .appendTo(notif);
+        var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
+        $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
+        $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
+        $("<option>")
+          .text("Wednesday")
+          .attr("value", "Wednesday")
+          .appendTo(select);
+        $("<option>")
+          .text("Thursday")
+          .attr("value", "Thursday")
+          .appendTo(select);
+        $("<option>").text("Friday").attr("value", "Friday").appendTo(select);
+        $("<option>")
+          .text("Saturday")
+          .attr("value", "Saturday")
+          .appendTo(select);
+        $("<option>").text("Sunday").attr("value", "Sunday").appendTo(select);
+        $("<button>", { text: "Confirm Date" })
+          .addClass("button is-warning confirmdate")
+          .appendTo(notif);
+  //finish making notif for later use
+  
   //keys:
   //7f70f995f82545cbaa83258381c1bff9
   //3c48ac9f4fb24f0da8619831bed373c0
@@ -138,34 +168,7 @@ $("#recipeBtn").on("click", function (event) {
         };
         console.log("You Picked a Recipe!");
         console.log(meal);
-        var notif = $("<div>")
-          .addClass("notification is-link is-light")
-          .text("Choose a Day to Place Recipe");
-        $("<button>").addClass("delete").appendTo(notif);
-
-        var daySelect = $("<div>")
-          .addClass("select is-warning")
-          .appendTo(notif);
-        var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
-        $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
-        $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
-        $("<option>")
-          .text("Wednesday")
-          .attr("value", "Wednesday")
-          .appendTo(select);
-        $("<option>")
-          .text("Thursday")
-          .attr("value", "Thursday")
-          .appendTo(select);
-        $("<option>").text("Friday").attr("value", "Friday").appendTo(select);
-        $("<option>")
-          .text("Saturday")
-          .attr("value", "Saturday")
-          .appendTo(select);
-        $("<option>").text("Sunday").attr("value", "Sunday").appendTo(select);
-        $("<button>", { text: "Confirm Date" })
-          .addClass("button is-warning confirmdate")
-          .appendTo(notif);
+        
 
         notif.appendTo($("#mealbtn"));
 
@@ -243,5 +246,5 @@ $("#emailBtn").click(function (event) {
     msg += day + "\n\n\n";
   });
   console.log(msg);
-  window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + encodeURI(msg));
+  window.open("mailto:" + email + "?subject=Test&body=" + encodeURI(msg));
 });
