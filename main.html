@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="./style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/54913567a4.js" crossorigin="anonymous"></script>
   </head>
   <script src="./dist/bulma.js"></script>
   <link rel="stylesheet" href="./dist/bulma-accordion.min.css" />
@@ -66,7 +67,7 @@
       <div class="columns">
         <div class="column ">
           <div class="has-text-centered">
-          <button id="clearBtn" class="button is-danger" style="margin: 10px;">Clear saved meals</button>
+          <button id="clearBtn" class="button is-danger is-small is-rounded" style="margin: 10px;">Clear saved meals</button>
           </div>
           <section class="accordions">
             <article class="accordion">
@@ -240,7 +241,11 @@
             <label class="label">Email</label>
             <div class="control">
               <input class="input " type="email" placeholder="e.g. alexsmith@gmail.com">
-              <button id="emailBtn" class="button is-primary " style="margin-top: 10px;">Send meals to e-mail</button>
+              <button id="emailBtn" class="button is-primary " style="margin-top: 10px;"> <span class="icon">
+                <i class="fas fa-envelope-square"></i>
+              </span>
+               <span>Send meals!</span> 
+              </button>
             </div>
           </div>
 		 
