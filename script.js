@@ -75,7 +75,7 @@ $("#recipeBtn").on("click", function (event) {
   //keys:
   //7f70f995f82545cbaa83258381c1bff9
   //3c48ac9f4fb24f0da8619831bed373c0
-  var apikey = "3c48ac9f4fb24f0da8619831bed373c0";
+  var apikey = "7f70f995f82545cbaa83258381c1bff9";
   var recipeInput = $("#recipeinput").val();
   var queryURL =
     "https://api.spoonacular.com/recipes/complexSearch?apiKey=" +
