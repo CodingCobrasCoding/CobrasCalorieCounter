@@ -22,13 +22,6 @@ $("#day3").text(days[3]);
 $("#day4").text(days[4]);
 $("#day5").text(days[5]);
 $("#day6").text(days[6]);
-// $("#pday0").attr("id", days[0]);
-// $("#pday1").attr("id", days[1]);
-// $("#pday2").attr("id", days[2]);
-// $("#pday3").attr("id", days[3]);
-// $("#pday4").attr("id", days[4]);
-// $("#pday5").attr("id", days[5]);
-// $("#pday6").attr("id", days[6]);
 
 var mealPlan = [];
 if (localStorage.getItem("mealPlan") === null) {
@@ -117,10 +110,11 @@ $("#recipeBtn").on("click", function (event) {
         .text("Link to Recipe")
         .attr("href", recipeURL)
         .attr("target", "_blank")
-        .addClass("column")
+        // .addClass("column")
         .appendTo(nutritionDiv);
       $("<button>", { text: "Choose Recipe" })
-        .addClass("button is-dark pickrecipe ")
+        .addClass("button is-dark pickrecipe")
+        .addClass("column")
         .appendTo(nutritionDiv);
 
       //event listener for pick a recipe
