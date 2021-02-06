@@ -15,8 +15,8 @@
   <script src="./dist/bulma.js"></script>
   <link rel="stylesheet" href="./dist/bulma-accordion.min.css" />
 
-  <body class="is-mobile">
-    <header class="container">
+  <body class="is-mobile container">
+    <header >
       <div
         class="box"
         style="background-color: darkorchid; width: 50%; margin: auto"
@@ -28,34 +28,37 @@
     </header>
 
     <!-- Ingredient search -->
-    <div id="test" class="box" style="margin-bottom: 50px; ">
-    	<div class="columns">
-          <div class="column is-one-third">
-            <div class="field">
-              <label class="label">Find a recipe</label>
-              <div class="control">
-                <input
-                  id="recipeinput"
-                  class="input"
-                  type="text"
-                  placeholder="Enter any ingredient"
-                />
-              </div>
-            </div>
-
-            <div class="control">
-              <button id="recipeBtn" class="button is-primary">Submit</button>
-            </div>
-		</div>
-		</div>
-		<div class="columns">
-            <div class="column is-two-thirds">
-              <div id="recipeinfo" class="container"></div>
-            </div>
+  <div  class="box" style="margin-bottom: 50px; ">
+    <div class="columns">
+      <div class="column is-one-third">
+        <div class="field">
+          <label class="label">Find a recipe</label>
+          <div class="control">
+            <input
+              id="recipeinput"
+              class="input"
+              type="text"
+              placeholder="Enter any ingredient"
+            />
           </div>
+        </div>
+        <div class="control">
+          <button id="recipeBtn" class="button is-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div class="columns">
+          <div class="column" id="mealbtn"></div>
+          <div class="column" id="recipeinfo"></div>
+        </div>
+      </div>
+    </div>
+  </div>
         
     
-    </div>
+    
 	
 
     <!-- Calendar -->

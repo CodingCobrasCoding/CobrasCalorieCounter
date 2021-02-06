@@ -78,11 +78,13 @@ $("#recipeBtn").on("click", function (event) {
       $("<button>", { text: recipeName + "   -   " + recipeCalories + "Cal" })
         .addClass("button is-danger recipebuttons")
         .attr("value", [i])
-        .appendTo("#recipeinfo");
+        .appendTo("#mealbtn");
     } //end for loop
 
     ////////////////////////////////////////
-    var nutritionDiv = $("<div>").addClass("container").appendTo("#recipeinfo");
+    var nutritionDiv = $("<div>")
+      .addClass("nutritionDiv")
+      .appendTo("#recipeinfo");
 
     $(".recipebuttons").on("click", function () {
       var v = $(this).attr("value");
@@ -107,14 +109,18 @@ $("#recipeBtn").on("click", function (event) {
       $("<p>")
         .text("% of Daily Cal: " + recipeCaloriesPerc)
         .appendTo(nutritionDiv);
-      $("<img>").attr("src", recipeIMG).appendTo(nutritionDiv);
+      $("<img>")
+        .attr("src", recipeIMG)
+        .addClass("column")
+        .appendTo(nutritionDiv);
       $("<a>")
         .text("Link to Recipe")
         .attr("href", recipeURL)
         .attr("target", "_blank")
+        .addClass("column")
         .appendTo(nutritionDiv);
       $("<button>", { text: "Choose Recipe" })
-        .addClass("button is-dark pickrecipe")
+        .addClass("button is-dark pickrecipe ")
         .appendTo(nutritionDiv);
 
       //event listener for pick a recipe
@@ -127,7 +133,7 @@ $("#recipeBtn").on("click", function (event) {
           calories: mealChosen.nutrition.nutrients[0].amount,
           percent: mealChosen.nutrition.nutrients[0].percentOfDailyNeeds,
           dayIndex: 0,
-        }
+        };
         console.log("You Picked a Recipe!");
         console.log(meal);
         var notif = $("<div>")
@@ -159,7 +165,7 @@ $("#recipeBtn").on("click", function (event) {
           .addClass("button is-warning confirmdate")
           .appendTo(notif);
 
-        notif.appendTo($("#test"));
+        notif.appendTo($("#mealbtn"));
 
         function restructureDays() {
           $("option").each(function (i) {
@@ -209,30 +215,29 @@ $("#recipeBtn").on("click", function (event) {
             .append(delbtn);
           $(pday).append(itemEl);
           console.log("appended");
-          delbtn.click(function(){
+          delbtn.click(function () {
             $(this).parent().remove();
           });
           $(this).parent().remove();
-          
-        })
-        
-      }) //end event listener for pick recipe
+        });
+      }); //end event listener for pick recipe
     }); //end event listener for recipe options
   }); //ajax closers
 }); //recipeBtn click closers
 
-$("#emailBtn").click(function(event){
+$("#emailBtn").click(function (event) {
   event.preventDefault();
   var email = $("#emailForm").val(); //use a selector to get their email from a text box once this is working
   var daysText = []; //text for each individual day, each element being a string with "[day name]: [recipes]"
-  days.forEach(function(day){
+  days.forEach(function (day) {
     daysText.push(day + ": \n");
   });
   var msg = ""; //the full body of the email
-  mealPlan.forEach(function(meal){
-    daysText[meal.dayIndex] += "\n" + meal.name + " | " + meal.percent + "% D/V";
+  mealPlan.forEach(function (meal) {
+    daysText[meal.dayIndex] +=
+      "\n" + meal.name + " | " + meal.percent + "% D/V";
   });
-  daysText.forEach(function(day){
+  daysText.forEach(function (day) {
     msg += day + "\n\n\n";
   });
   console.log(msg);

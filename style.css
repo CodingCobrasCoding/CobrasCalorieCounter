@@ -1,11 +1,17 @@
 #startMssg {
-	text-align: center;
+  text-align: center;
 }
 
 .button {
-	margin: 3px;
+  margin: 3px;
 }
 
 textarea :focus {
   is-focused
 }
+
+.nutritionDiv img {
+  max-width: 200px;
+  max-height: 200px;
+}
+ 
