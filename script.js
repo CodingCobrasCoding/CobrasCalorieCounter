@@ -35,6 +35,15 @@ mealPlan.forEach(function(meal){
   addToCalendar(meal);
 });
 
+$("#clearBtn").click(function(event){
+  event.preventDefault();
+  mealPlan = [];
+  localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
+  for(var i = 0; i < 7; i++){
+    $("#pday" + i).empty();
+  }
+})
+
 $("#recipeBtn").on("click", function (event) {
   event.preventDefault();
   $("#mealbtn").empty();
@@ -200,36 +209,6 @@ $("#recipeBtn").on("click", function (event) {
           mealPlan.push(meal); //add meal object to our mealPlan array
           localStorage.setItem("mealPlan", JSON.stringify(mealPlan)); //store the updated array in localStorage
           addToCalendar(meal);
-          // var pday = "#pday" + meal.dayIndex;
-          // console.log(pday);
-          // var hundred = 100 - meal.percent;
-          // var delbtn = $("<button>").addClass("delete");
-          // var itemEl = $("<div>")
-          //   .attr("class", "columns")
-          //   .attr("id", meal.name)
-          //   .html(
-          //     "<p>" +
-          //       meal.name +
-          //       "<br/><a href=" +
-          //       meal.link +
-          //       ">" +
-          //       meal.link +
-          //       "</a><br/>" +
-          //       meal.calories +
-          //       " - Calories <br/>" +
-          //       meal.percent +
-          //       " - % of Daily Calories <br/>" +
-          //       hundred +
-          //       " - % of Daily Left</p>"
-          //   )
-          //   .append(delbtn);
-          // $(pday).append(itemEl);
-          // console.log("appended");
-          // delbtn.click(function () {
-          //   mealPlan.splice(mealPlan.indexOf(meal), 1); //remove the meal from the mealplan array
-          //   localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
-          //   $(this).parent().remove();
-          // });
           $(this).parent().remove();
         });
       }); //end event listener for pick recipe
@@ -288,3 +267,4 @@ function addToCalendar(meal){
     $(this).parent().remove();
   });
 }
+
