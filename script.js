@@ -98,7 +98,15 @@ $("#recipeBtn").on("click", function (event) {
       var recipeResults = response.results[i];
 
       //once they choose a recipe, dynamically create the nutirition info, recipes steps, and ingredients
-      $("<button>", { text: recipeName + "   -   " + recipeCalories + "Cal" })
+      $("<button>", {
+        html:
+          "<strong>" +
+          recipeName +
+          "</strong>" +
+          "   -   " +
+          recipeCalories +
+          "Cal",
+      })
         .addClass("button is-danger recipebuttons")
         .attr("value", [i])
         .appendTo("#mealbtn");
@@ -124,13 +132,13 @@ $("#recipeBtn").on("click", function (event) {
       nutritionDiv.empty();
       //dynamically append that info to the DOM
       $("<p>")
-        .text("Recipe Name: " + recipeName)
+        .html("<strong>Recipe Name: </strong>" + recipeName)
         .appendTo(nutritionDiv);
       $("<p>")
-        .text("Recipe Calories: " + recipeCalories)
+        .html("<strong>Recipe Calories: </strong>" + recipeCalories)
         .appendTo(nutritionDiv);
       $("<p>")
-        .text("% of Daily Cal: " + recipeCaloriesPerc)
+        .html("<strong>% of Daily Cal: </strong>" + recipeCaloriesPerc)
         .appendTo(nutritionDiv);
       $("<img>")
         .attr("src", recipeIMG)
@@ -140,12 +148,12 @@ $("#recipeBtn").on("click", function (event) {
         .text("Link to Recipe")
         .attr("href", recipeURL)
         .attr("target", "_blank")
-        // .addClass("column")
         .appendTo(nutritionDiv);
       $("<button>", { text: "Choose Recipe" })
         .addClass("button is-dark pickrecipe")
         .addClass("column")
         .appendTo(nutritionDiv);
+      nutritionDiv.addClass("nutrBorder");
 
       //event listener for pick a recipe
       $(".pickrecipe").on("click", function () {
