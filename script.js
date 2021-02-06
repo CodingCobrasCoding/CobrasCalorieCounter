@@ -219,5 +219,5 @@ $("#emailBtn").click(function(event){
     msg += day + "\n\n\n";
   });
   console.log(msg);
-  window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + encodeURI(msg));
+  window.open("mailto:" + email + "?subject=Test&body=" + encodeURI(msg));
 });
