@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Cobra Meal Planner</title>
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
-		/>
-		<link rel="stylesheet" href="./style.css" />
-	</head>
-	<body>
-		<section class="section is-large">
-			<div id="startMssg" class="container">
-				<h1 class="title">Welcome!</h1>
-				<p class="subtitle">Cobra Meal <strong>Planner</strong></p>
-				<button
-					class="button is-primary is-rounded is-large is-outlined"
-					id="start"
-				>
-					Begin
-				</button>
-			</div>
-		</section>
-	</body>
-	<script>
-		document.getElementById("start").addEventListener("click", function () {
-			window.location.href = "main.html";
-		});
-	</script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cobra Meal Planner</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section class="section container">
+      <div id="startMssg" class="box" style="background-color: lightgreen">
+        <h1 class="title">Welcome!</h1>
+        <p class="subtitle">Cobra Meal <strong>Planner</strong></p>
+        <button
+          class="button is-primary is-rounded is-large is-outlined"
+          id="start"
+        >
+          Begin
+        </button>
+      </div>
+    </section>
+  </body>
+  <script>
+    document.getElementById("start").addEventListener("click", function () {
+      window.location.href = "main.html";
+    });
+  </script>
 </html>
