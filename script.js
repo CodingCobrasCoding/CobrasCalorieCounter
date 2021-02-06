@@ -110,7 +110,6 @@ $("#recipeBtn").on("click", function (event) {
         .text("Link to Recipe")
         .attr("href", recipeURL)
         .attr("target", "_blank")
-        // .addClass("column")
         .appendTo(nutritionDiv);
       $("<button>", { text: "Choose Recipe" })
         .addClass("button is-dark pickrecipe")
