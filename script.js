@@ -33,22 +33,20 @@ if (localStorage.getItem("mealPlan") === null) {
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 }
 
-mealPlan.forEach(function(meal){
+mealPlan.forEach(function (meal) {
   addToCalendar(meal);
-  mealCount[meal.dayIndex]++;
-  $("#day" + meal.dayIndex).text(days[meal.dayIndex] + " (" + mealCount[meal.dayIndex] + ")");
 });
 
-$("#clearBtn").click(function(event){
+$("#clearBtn").click(function (event) {
   event.preventDefault();
   mealPlan = [];
   localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
-  for(var i = 0; i < 7; i++){
+  for (var i = 0; i < 7; i++) {
     $("#pday" + i).empty();
     mealCount[i] = 0;
     $("#day" + i).text(days[i]);
   }
-})
+});
 
 $("#recipeBtn").on("click", function (event) {
   event.preventDefault();
@@ -232,7 +230,7 @@ $("#emailBtn").click(function (event) {
   window.open("mailto:" + email + "?subject=Test&body=" + encodeURI(msg));
 });
 
-function addToCalendar(meal){
+function addToCalendar(meal) {
   var day = "#day" + meal.dayIndex;
   var pday = "#pday" + meal.dayIndex;
   console.log(pday);
@@ -243,18 +241,18 @@ function addToCalendar(meal){
     .attr("id", meal.name)
     .html(
       "<p>" +
-      meal.name +
-      "<br/><a href=" +
-      meal.link +
-      ">" +
-      meal.link +
-      "</a><br/>" +
-      meal.calories +
-      " - Calories <br/>" +
-      meal.percent +
-      " - % of Daily Calories <br/>" +
-      hundred +
-      " - % of Daily Left</p>"
+        meal.name +
+        "<br/><a href=" +
+        meal.link +
+        ">" +
+        meal.link +
+        "</a><br/>" +
+        meal.calories +
+        " - Calories <br/>" +
+        meal.percent +
+        " - % of Daily Calories <br/>" +
+        hundred +
+        " - % of Daily Left</p>"
     )
     .append(delbtn);
   $(pday).append(itemEl);
@@ -265,13 +263,11 @@ function addToCalendar(meal){
     mealPlan.splice(mealPlan.indexOf(meal), 1); //remove the meal from the mealplan array
     localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
     mealCount[meal.dayIndex]--;
-    if(mealCount[meal.dayIndex]<=0){
+    if (mealCount[meal.dayIndex] <= 0) {
       $(day).text(days[meal.dayIndex]);
-    }
-    else{
+    } else {
       $(day).text(days[meal.dayIndex] + " (" + mealCount[meal.dayIndex] + ")");
     }
     $(this).parent().remove();
   });
 }
-
