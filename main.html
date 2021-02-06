@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🐍 CALORIE COUNTER</title>
+    <title>Meals & Calories</title>
+    <link rel = "icon" href =  
+"./snek icon.png" 
+        type = "image/x-icon"> 
+       
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
@@ -15,54 +19,52 @@
   <script src="./dist/bulma.js"></script>
   <link rel="stylesheet" href="./dist/bulma-accordion.min.css" />
 
-  <body class="is-mobile">
-    <header class="container">
-      <div
-        class="box"
-        style="background-color: darkorchid; width: 50%; margin: auto"
-      >
-        <h1 style="text-align: center; font-weight: bolder; color: white">
-          🐍 COBRAS CALORIE COUNTER 🐍
+  <body class="is-mobile" style="background-color: lightgreen;">
+    <div class="container">
+    <header>
+        <h1 style="text-align: center; font-weight: bolder; margin-bottom: 50px;">
+          🐍 Meal & Calorie Planner 🐍
         </h1>
-      </div>
     </header>
 
     <!-- Ingredient search -->
-    <div id="test" class="box" style="margin-bottom: 50px; ">
-    	<div class="columns">
-          <div class="column is-one-third">
-            <div class="field">
-              <label class="label">Find a recipe</label>
-              <div class="control">
-                <input
-                  id="recipeinput"
-                  class="input"
-                  type="text"
-                  placeholder="Enter any ingredient"
-                />
-              </div>
-            </div>
-
-            <div class="control">
-              <button id="recipeBtn" class="button is-primary">Submit</button>
-            </div>
-		</div>
-		</div>
-		<div class="columns">
-            <div class="column is-two-thirds">
-              <div id="recipeinfo" class="container"></div>
-            </div>
+  <div  class="box" style="margin-bottom: 50px; ">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <div class="field" style="text-align: center;">
+          <label class="label">Find a recipe</label>
+          <div class="control">
+            <input
+              id="recipeinput"
+              class="input is-one-third"
+              type="text"
+              placeholder="Enter any ingredient"
+            />
           </div>
+        </div>
+        <div class="control has-text-centered">
+          <button id="recipeBtn" class="button is-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div class="columns">
+          <div class="column" id="mealbtn"></div>
+          <div class="column" id="recipeinfo"></div>
+        </div>
+      </div>
+    </div>
+  </div>
         
     
-    </div>
+    
 	
 
     <!-- Calendar -->
-    <!-- <div class="container"> -->
 		<div class="box">
       <div class="columns">
-        <div class="column is-two-thirds">
+        <div class="column ">
           <section class="accordions">
             <article class="accordion">
               <div class="accordion-header toggle">
@@ -231,18 +233,18 @@
             </article>
           </section>
 		
-          <div class="field">
+          <div class="field has-text-centered " style="margin-top: 20px;">
             <label class="label">Email</label>
             <div class="control">
-              <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com" id="emailForm"> 
-              <button id="emailBtn" class="button is-success " style="margin-top: 10px;">Send meals to e-mail</button>
+              <input class="input " type="email" placeholder="e.g. alexsmith@gmail.com">
+              <button id="emailBtn" class="button is-primary " style="margin-top: 10px;">Send meals to e-mail</button>
             </div>
           </div>
 		 
         </div>
       </div>
 	  </div>
-    <!-- </div> -->
+    </div>
 
     
     <script
