@@ -29,3 +29,19 @@ input :focus {
 	border-radius: 5px;
 	padding: 10px
 }
+
+#start {
+	background-color: transparent;
+	border-color: black;
+	color: black;
+}
+
+#start:hover{
+	color: white;
+	background-color: #00D1B2;
+	border-style: none;
+}
+
+html, body{
+	height: 100%;
+}
