@@ -26,16 +26,27 @@ $("#day6").text(days[6]);
 var mealCount = [0, 0, 0, 0, 0, 0, 0]; //number of meals per day, index relative to "days" array
 
 var mealPlan = [];
+var notes = ["","","","","","",""];
 if (localStorage.getItem("mealPlan") === null) {
   localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 } else {
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 }
+if (localStorage.getItem("notes") === null) {
+  localStorage.setItem("notes", JSON.stringify(notes));
+  notes = JSON.parse(localStorage.getItem("notes"));
+} else {
+  notes = JSON.parse(localStorage.getItem("notes"));
+}
 
 mealPlan.forEach(function (meal) {
   addToCalendar(meal);
 });
+
+for(var i = 0; i<7; i++){
+  $("#notes" + i).val(notes[i]);
+}
 
 $("#clearBtn").click(function (event) {
   event.preventDefault();
@@ -283,5 +294,12 @@ function addToCalendar(meal) {
       $(day).text(days[meal.dayIndex] + " (" + mealCount[meal.dayIndex] + ")");
     }
     $(this).parent().remove();
+  });
+}
+
+for(var i=0; i<7; i++){ //add input listeners to the notes boxes
+  $("#notes" + i).on("input", function(){
+    notes[parseInt($(this).data("num"))] = $(this).val();
+    localStorage.setItem("notes", JSON.stringify(notes));
   });
 }
