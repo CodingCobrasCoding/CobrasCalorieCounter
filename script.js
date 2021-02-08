@@ -25,15 +25,16 @@ $("#day6").text(days[6]);
 
 var mealCount = [0, 0, 0, 0, 0, 0, 0]; //number of meals per day, index relative to "days" array
 
+//create arrays for handling meal and notes data
 var mealPlan = [];
 var notes = ["","","","","","",""];
-if (localStorage.getItem("mealPlan") === null) {
+if (localStorage.getItem("mealPlan") === null) { //get meals if there are any in localStorage to load them on the page
   localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 } else {
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 }
-if (localStorage.getItem("notes") === null) {
+if (localStorage.getItem("notes") === null) { //get notes if there are any in localStorage to load them on the page
   localStorage.setItem("notes", JSON.stringify(notes));
   notes = JSON.parse(localStorage.getItem("notes"));
 } else {
@@ -41,11 +42,11 @@ if (localStorage.getItem("notes") === null) {
 }
 
 mealPlan.forEach(function (meal) {
-  addToCalendar(meal);
+  addToCalendar(meal); //add newly loaded meals to the calendar
 });
 
 for(var i = 0; i<7; i++){
-  $("#notes" + i).val(notes[i]);
+  $("#notes" + i).val(notes[i]); //add newly loaded notes to the calendar
 }
 
 $("#clearBtn").click(function (event) {
