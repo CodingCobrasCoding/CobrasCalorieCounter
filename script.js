@@ -7,13 +7,17 @@ var days = [
   "Thursday",
   "Friday",
   "Saturday",
-];
-var startDay = days[new Date().getDate()];
+]
+var startDay = days[new Date().getDay()];
+
 startDayIndex = days.indexOf(startDay);
+
 // console.log(startDayIndex);
 daysShifted = days.splice(0, startDayIndex);
+
 // console.log(daysShifted);
 days = days.concat(daysShifted);
+
 //now the days should be sorted from current day
 $("#day0").text(days[0]);
 $("#day1").text(days[1]);
