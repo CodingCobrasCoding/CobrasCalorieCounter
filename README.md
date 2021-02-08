@@ -8,9 +8,8 @@ The Cobra Mea Planner allows a user to search for recipes based off of a single 
 
 First click <a href="https://codingcobrascoding.github.io/CobrasCalorieCounter/"> HERE </a> to take you to the landing page!
 Click begin to start. Enter any ingredient or food into the search bar and click submit. You will be presented with a list of 5 recipes to choose from. Select one to get more information about it, and then click choose to select a day to save to the calendar. Each choice will be saved and you will be able to review them, clear all or one of them, and then be able to your choices emailed to you!
-
-![alt text](ScreenShots\Screenshot 2021-02-07 183426.png)
-![alt text](ScreenShots\Screenshot 2021-02-07 183459.png)
+![alt text](/ScreenShots/Screen1.png)
+![alt text](/ScreenShots/Screen2.png)
 
 # Credits
 
