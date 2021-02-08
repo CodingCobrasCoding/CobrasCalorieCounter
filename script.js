@@ -25,17 +25,29 @@ $("#day6").text(days[6]);
 
 var mealCount = [0, 0, 0, 0, 0, 0, 0]; //number of meals per day, index relative to "days" array
 
+//create arrays for handling meal and notes data
 var mealPlan = [];
-if (localStorage.getItem("mealPlan") === null) {
+var notes = ["","","","","","",""];
+if (localStorage.getItem("mealPlan") === null) { //get meals if there are any in localStorage to load them on the page
   localStorage.setItem("mealPlan", JSON.stringify(mealPlan));
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 } else {
   mealPlan = JSON.parse(localStorage.getItem("mealPlan"));
 }
+if (localStorage.getItem("notes") === null) { //get notes if there are any in localStorage to load them on the page
+  localStorage.setItem("notes", JSON.stringify(notes));
+  notes = JSON.parse(localStorage.getItem("notes"));
+} else {
+  notes = JSON.parse(localStorage.getItem("notes"));
+}
 
 mealPlan.forEach(function (meal) {
-  addToCalendar(meal);
+  addToCalendar(meal); //add newly loaded meals to the calendar
 });
+
+for(var i = 0; i<7; i++){
+  $("#notes" + i).val(notes[i]); //add newly loaded notes to the calendar
+}
 
 $("#clearBtn").click(function (event) {
   event.preventDefault();
@@ -216,6 +228,8 @@ $("#recipeBtn").on("click", function (event) {
 
 $("#emailBtn").click(function (event) {
   event.preventDefault();
+  var apiKey = "1c11c9eb7b6dc935f81409e69895f7dc";
+  var queryUrl = "http://apilayer.net/api/check?access_key=";
   var email = $("#emailForm").val(); //use a selector to get their email from a text box once this is working
   var daysText = []; //text for each individual day, each element being a string with "[day name]: [recipes]"
   days.forEach(function (day) {
@@ -230,7 +244,19 @@ $("#emailBtn").click(function (event) {
     msg += day + "\n\n\n";
   });
   console.log(msg);
-  window.open("mailto:" + email + "?subject=Test&body=" + encodeURI(msg));
+  $.ajax({
+    url: queryUrl + apiKey + "&email=" + email,
+    dataType: "jsonp"
+  }).then(function(response){
+    console.log(response);
+    if(response.format_valid){
+      $("#emailLabel").text("Email");
+      window.open("mailto:" + email + "?subject=Meal%20Plan&body=" + encodeURI(msg));
+    }
+    else{
+      $("#emailLabel").text("Error: Invalid email");
+    }
+  });
 });
 
 function addToCalendar(meal) {
@@ -272,5 +298,12 @@ function addToCalendar(meal) {
       $(day).text(days[meal.dayIndex] + " (" + mealCount[meal.dayIndex] + ")");
     }
     $(this).parent().remove();
+  });
+}
+
+for(var i=0; i<7; i++){ //add input listeners to the notes boxes
+  $("#notes" + i).on("input", function(){
+    notes[parseInt($(this).data("num"))] = $(this).val();
+    localStorage.setItem("notes", JSON.stringify(notes));
   });
 }
