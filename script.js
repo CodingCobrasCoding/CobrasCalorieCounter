@@ -213,6 +213,8 @@ $("#recipeBtn").on("click", function (event) {
 
 $("#emailBtn").click(function (event) {
   event.preventDefault();
+  var apiKey = "1c11c9eb7b6dc935f81409e69895f7dc";
+  var queryUrl = "http://apilayer.net/api/check?access_key=";
   var email = $("#emailForm").val(); //use a selector to get their email from a text box once this is working
   var daysText = []; //text for each individual day, each element being a string with "[day name]: [recipes]"
   days.forEach(function (day) {
@@ -227,7 +229,19 @@ $("#emailBtn").click(function (event) {
     msg += day + "\n\n\n";
   });
   console.log(msg);
-  window.open("mailto:" + email + "?subject=Test&body=" + encodeURI(msg));
+  $.ajax({
+    url: queryUrl + apiKey + "&email=" + email,
+    dataType: "jsonp"
+  }).then(function(response){
+    console.log(response);
+    if(response.format_valid){
+      $("#emailLabel").text("Email");
+      window.open("mailto:" + email + "?subject=Meal%20Plan&body=" + encodeURI(msg));
+    }
+    else{
+      $("#emailLabel").text("Error: Invalid email");
+    }
+  });
 });
 
 function addToCalendar(meal) {

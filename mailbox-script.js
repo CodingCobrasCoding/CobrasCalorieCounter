@@ -33,13 +33,13 @@ $(document).ready(function(){
     // console.log(encodeURI(JSON.stringify(meals)));
     // window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + encodeURI(JSON.stringify(meals)));
         //code for using the mailbox api
-//    $.ajax({
-//        url: queryUrl + apiKey + emailCheck,
-//        dataType: "jsonp"
-//    }).then(function(response){
-//        console.log(response);
-//        window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + msg);
-//    });
+   $.ajax({
+       url: queryUrl + apiKey + emailCheck,
+       dataType: "jsonp"
+   }).then(function(response){
+       console.log(response);
+       window.open("mailto:gsonnier3@gmail.com?subject=Test&body=" + msg);
+   });
 
     function restructureDays(){
         $("option").each(function(i){
