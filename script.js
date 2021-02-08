@@ -67,11 +67,14 @@ $("#recipeBtn").on("click", function (event) {
   //Make notif early and append later when we need to
   var notif = $("<div>")
     .attr("id", "notifDiv")
-    .addClass("notification is-link is-light")
-    .text("Choose a Day to Place Recipe");
+    .addClass("notification is-link is-light columns")
+    .text("Choose a Day to Place Recipe ");
   $("<button>").addClass("delete").appendTo(notif);
   var daySelect = $("<div>").addClass("select is-warning").appendTo(notif);
-  var select = $("<select>").attr("id", "chosen").appendTo(daySelect);
+  var select = $("<select>")
+    .attr("id", "chosen")
+    .addClass("column")
+    .appendTo(daySelect);
   $("<option>").text("Monday").attr("value", "Monday").appendTo(select);
   $("<option>").text("Tuesday").attr("value", "Tuesday").appendTo(select);
   $("<option>").text("Wednesday").attr("value", "Wednesday").appendTo(select);
@@ -80,7 +83,7 @@ $("#recipeBtn").on("click", function (event) {
   $("<option>").text("Saturday").attr("value", "Saturday").appendTo(select);
   $("<option>").text("Sunday").attr("value", "Sunday").appendTo(select);
   $("<button>", { text: "Confirm Date" })
-    .addClass("button is-warning confirmdate")
+    .addClass("button is-warning confirmdate column")
     .appendTo(notif);
   //finish making notif for later use
 

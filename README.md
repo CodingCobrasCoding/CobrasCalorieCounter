@@ -1,23 +1,20 @@
-# CobrasCalorieCounter
+# Cobras Meal Planner
 
-# Proposal
+# Description
 
-Desc- A user is able to track calories and meals specifically tailored to them using spoonacular and esha API's. They will be able to save the meals and food and get recommended meals based on the calorie and other nutritional info.
+    The Cobra Mea Planner allows a user to search for recipes based off of a single ingredient. 5 results will display and the user will be able to select a recipe and save it to a provided calendar. Upon selecting all desired meals, the user will be able to send them to their email!
 
-User Story-
-Court began their fitness journey…(This got lost from a .md file, will complete asap)
+# Usage
 
-API’s
-Spoonacular
-ESHA
+    First click <a href="https://codingcobrascoding.github.io/CobrasCalorieCounter/"> HERE </a> to take you to the landing page!
+    Click begin to start. Enter any ingredient or food into the search bar and click submit. You will be presented with a list of 5 recipes to choose from. Select one to get more information about it, and then click choose to select a day to save to the calendar. Each choice will be saved and you will be able to review them, clear all or one of them, and then be able to your choices emailed to you!
 
-WireFrame-
+    ![alt text](ScreenShots\Screenshot 2021-02-07 183426.png)
+    ![alt text](ScreenShots\Screenshot 2021-02-07 183459.png)
 
-https://lucid.app/lucidchart/invitations/accept/9e9a2972-1bff-478d-b15b-38e85676fd13
+# Credits
 
-Tasks
-
-Greg- JS
-Scott- JS
-Dominique- Front
-Nick- Front/flex
+    <a href="https://github.com/domihorinka">Dominique Horinka</a>
+    <a href="https://github.com/swhachey">Scott Hachey</a>
+    <a href="https://github.com/gsonnier333">Greg Sonnier</a>
+    <a href="https://github.com/Perkyderm">Nick Goedecke</a>
