@@ -27,7 +27,7 @@ input :focus {
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 5px;
-	padding: 10px
+	padding: 10px;
 }
 
 #start {
@@ -44,4 +44,8 @@ input :focus {
 
 html, body{
 	height: 100%;
+}
+
+body {
+font-family: 'Open Sans', sans-serif;
 }
